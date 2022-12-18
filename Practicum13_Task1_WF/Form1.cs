@@ -54,6 +54,7 @@ namespace Practicum13_Task1_WF
             button2.Enabled = true;
             button3.Enabled = false;
             button4.Enabled = false;
+            numericUpDown4.Enabled = true;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -73,6 +74,7 @@ namespace Practicum13_Task1_WF
             button2.Enabled = false;
             button3.Enabled = false;
             button4.Enabled = true;
+            numericUpDown4.Enabled = true;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
