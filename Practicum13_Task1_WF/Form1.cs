@@ -159,7 +159,7 @@ namespace Practicum13_Task1_WF
             int count = 0;
             foreach (var t in transport)
             {
-                if (t.LoadCapacity >= loadCap) 
+                if (t.LoadCapacity == loadCap) 
                 {
                     richTextBox2.Text += t.OutInfo();
                     count++;
@@ -187,8 +187,8 @@ namespace Practicum13_Task1_WF
                 {
 					brand = arr[i + 1];
 					number = Convert.ToInt32(arr[i + 2]);
-					speed = Convert.ToInt32(arr[i + 2]);
-					loadCapacity = Convert.ToInt32(arr[i + 3]);
+					speed = Convert.ToInt32(arr[i + 3]);
+					loadCapacity = Convert.ToInt32(arr[i + 4]);
 					Car car = new Car(brand, number, speed, loadCapacity);
 					transport.Add(car);
 					richTextBox1.Text += car.OutInfo();
