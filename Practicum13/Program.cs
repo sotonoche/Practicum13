@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Practicum13
 {
@@ -143,8 +144,87 @@ namespace Practicum13
         static void Main(string[] args)
         {
             List <Trans> transport = new List<Trans>();
-            int amount;
-            while (true)
+            int amount = 0;
+            string brand;
+            int number = 0, speed = 0, loadCapacity = 0;
+            bool isCarriage = true;
+            bool isTrailer = true;
+
+            int opetation;
+            Console.WriteLine("Как Вы желаете получить данные?\n1 - Взять данные из файла\n2 - Ввести данные в ручную");
+            Console.Write("Введите номер желаемой операции: ");
+            opetation = int.Parse(Console.ReadLine());
+			switch (opetation) {
+				case 1:
+                    //чтение из файла database.txt
+                    //заполнить в формате 
+                    //[1]Тип т/с (Автомобиль, Мотоцикл, Грузовик)
+                    //[2]Марка
+                    //[3]Номер
+                    //[4]Скорость
+                    //[5]Грузоподъемность (если Автомобиль или Грузовик)
+                    //[6]Есть ли прицеп/коляска (если Грузовик, если Мотоцикл - вписать на строке [5])
+                    string fileName = "database.txt";
+                    string filePath = Path.GetFullPath(fileName);
+			        string[] arr = File.ReadAllLines(filePath);
+
+			for (int i = 0; i < arr.Length; i++) {
+				if (arr[i] == "Автомобиль") 
+                {
+					brand = arr[i + 1];
+					number = Convert.ToInt32(arr[i + 2]);
+					speed = Convert.ToInt32(arr[i + 2]);
+					loadCapacity = Convert.ToInt32(arr[i + 3]);
+					Car car = new Car(brand, number, speed, loadCapacity);
+					transport.Add(car);
+				}
+
+                else if (arr[i] == "Мотоцикл") 
+                {
+                    brand = arr[i + 1];
+                    number = Convert.ToInt32(arr[i + 2]);
+					speed = Convert.ToInt32(arr[i + 3]);
+                    string answ = arr[i + 4];
+                            switch (answ)
+                            {
+                                case "Да":
+                                    isCarriage = true;
+                                    loadCapacity = Convert.ToInt32(arr[i + 5]);
+                                    break;
+                                case "Нет":
+                                    isCarriage = false;
+                                    break; 
+                            }
+                    Motorcycle bike = new Motorcycle(brand, number, speed, loadCapacity, isCarriage);
+                    bike.GetLoadCapacity();
+                    transport.Add(bike);
+				}
+
+                else if (arr[i] == "Грузовик") 
+                {
+                    brand = arr[i + 1];
+                    number = Convert.ToInt32(arr[i + 2]);
+					speed = Convert.ToInt32(arr[i + 3]);
+                    loadCapacity = Convert.ToInt32(arr[i + 4]);
+
+                    string str = arr[i + 5];
+                            switch (str)
+                            {
+                                case "Да":
+                                    isTrailer = true;
+                                    break;
+                                case "Нет":
+                                    isTrailer = false;
+                                    break;
+                            }
+                    Truck truck = new Truck(brand, number, speed, loadCapacity, isTrailer);
+                    truck.GetLoadCapacity();
+                    transport.Add(truck);
+				}
+			}
+					break;
+                case 2:
+                    while (true)
             {
                 try
                 {
@@ -162,6 +242,8 @@ namespace Practicum13
                     Console.WriteLine(ex.Message);
                 }
             }
+                    break;
+			}
 
             for (int i = 0; i < amount; i++)
             {
@@ -186,8 +268,6 @@ namespace Practicum13
                     }
                 }
 
-                string brand;
-                int number = 0, speed = 0, loadCapacity = 0;
                 switch (choose)
                 {
                     case 1:
@@ -219,7 +299,6 @@ namespace Practicum13
                     case 2:
                         Console.Write("Введите марку т/с: ");
                         brand = Console.ReadLine();
-                        bool isCarriage = true;
                         try
                         {
                             Console.Write("Введите номер т/с: ");
@@ -270,7 +349,6 @@ namespace Practicum13
                     case 3:
                         Console.Write("Введите марку т/с: ");
                         brand = Console.ReadLine();
-                        bool isTrailer = true;
                         try
                         {
                             Console.Write("Введите номер т/с: ");

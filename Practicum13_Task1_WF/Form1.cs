@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -167,7 +168,80 @@ namespace Practicum13_Task1_WF
             if (count == 0) MessageBox.Show("Подходящих т/с не найдено", "Ошибка!");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+		private void button6_Click(object sender, EventArgs e) {
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            //фильтр по типу файлов
+            dlg.Filter = "Text files(*.txt)|*.txt";
+            //директория папки, которая открывается по нажатию кнопки
+            dlg.InitialDirectory = "E:\\УП\\Practicum13\\Practicum13\\bin\\Debug";
+            
+            if (dlg.ShowDialog() == DialogResult.Cancel) return;
+
+            string fileName = dlg.FileName;
+            string filePath = Path.GetFullPath(fileName);
+			string[] arr = File.ReadAllLines(filePath);
+
+			for (int i = 0; i < arr.Length; i++) {
+				if (arr[i] == "Автомобиль") 
+                {
+					brand = arr[i + 1];
+					number = Convert.ToInt32(arr[i + 2]);
+					speed = Convert.ToInt32(arr[i + 2]);
+					loadCapacity = Convert.ToInt32(arr[i + 3]);
+					Car car = new Car(brand, number, speed, loadCapacity);
+					transport.Add(car);
+					richTextBox1.Text += car.OutInfo();
+				}
+
+                else if (arr[i] == "Мотоцикл") 
+                {
+                    brand = arr[i + 1];
+                    number = Convert.ToInt32(arr[i + 2]);
+					speed = Convert.ToInt32(arr[i + 3]);
+                    string answ = arr[i + 4];
+                            switch (answ)
+                            {
+                                case "Да":
+                                    isCarriage = true;
+                                    loadCapacity = Convert.ToInt32(arr[i + 5]);
+                                    break;
+                                case "Нет":
+                                    isCarriage = false;
+                                    break; 
+                            }
+                    Motorcycle bike = new Motorcycle(brand, number, speed, loadCapacity, isCarriage);
+                    bike.GetLoadCapacity();
+                    transport.Add(bike);
+                    richTextBox1.Text += bike.OutInfo();
+				}
+
+                else if (arr[i] == "Грузовик") 
+                {
+                    brand = arr[i + 1];
+                    number = Convert.ToInt32(arr[i + 2]);
+					speed = Convert.ToInt32(arr[i + 3]);
+                    loadCapacity = Convert.ToInt32(arr[i + 4]);
+
+                    string str = arr[i + 5];
+                            switch (str)
+                            {
+                                case "Да":
+                                    isTrailer = true;
+                                    break;
+                                case "Нет":
+                                    isTrailer = false;
+                                    break;
+                            }
+                    Truck truck = new Truck(brand, number, speed, loadCapacity, isTrailer);
+                    truck.GetLoadCapacity();
+                    transport.Add(truck);
+                    richTextBox1.Text += truck.OutInfo();
+				}
+			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
         {
             try
             {
