@@ -1,0 +1,16 @@
+D:\c_develop\projects\Practicum13\Practicum13\bin\Debug\Practicum13.exe.config
+D:\c_develop\projects\Practicum13\Practicum13\bin\Debug\Practicum13.exe
+D:\c_develop\projects\Practicum13\Practicum13\bin\Debug\Practicum13.pdb
+D:\c_develop\projects\Practicum13\Practicum13\obj\Debug\Practicum13.csproj.AssemblyReference.cache
+D:\c_develop\projects\Practicum13\Practicum13\obj\Debug\Practicum13.csproj.SuggestedBindingRedirects.cache
+D:\c_develop\projects\Practicum13\Practicum13\obj\Debug\Practicum13.csproj.CoreCompileInputs.cache
+D:\c_develop\projects\Practicum13\Practicum13\obj\Debug\Practicum13.exe
+D:\c_develop\projects\Practicum13\Practicum13\obj\Debug\Practicum13.pdb
+E:\УП\Practicum13\Practicum13\bin\Debug\Practicum13.exe.config
+E:\УП\Practicum13\Practicum13\bin\Debug\Practicum13.exe
+E:\УП\Practicum13\Practicum13\bin\Debug\Practicum13.pdb
+E:\УП\Practicum13\Practicum13\obj\Debug\Practicum13.csproj.CoreCompileInputs.cache
+E:\УП\Practicum13\Practicum13\obj\Debug\Practicum13.exe
+E:\УП\Practicum13\Practicum13\obj\Debug\Practicum13.pdb
+E:\УП\Practicum13\Practicum13\obj\Debug\Practicum13.csproj.AssemblyReference.cache
+E:\УП\Practicum13\Practicum13\obj\Debug\Practicum13.csproj.SuggestedBindingRedirects.cache
