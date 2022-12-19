@@ -336,7 +336,12 @@ namespace Practicum13
             foreach (var t in transport)
             {
                 if (t.LoadCapacity >= loadCap) t.OutInfo();
-                else Console.WriteLine("Подходящих т/с не обнаружено!");
+                else
+                {
+                    Console.WriteLine("Подходящих т/с не обнаружено!");
+                    return;
+                }
+                
             }
         }
     }
