@@ -331,18 +331,18 @@ namespace Practicum13
                     Console.WriteLine(ex.Message);
                 }
             }
-            
+
+            int count = 0;
             Console.WriteLine("Т/с, с подходящей грузоподъемностью:\n");
             foreach (var t in transport)
             {
-                if (t.LoadCapacity >= loadCap) t.OutInfo();
-                else
+                if (t.LoadCapacity >= loadCap) 
                 {
-                    Console.WriteLine("Подходящих т/с не обнаружено!");
-                    return;
+                    t.OutInfo();
+                    count++;
                 }
-                
             }
+            if (count == 0) Console.WriteLine("Подходящих т/с не обнаружено");
         }
     }
 }
