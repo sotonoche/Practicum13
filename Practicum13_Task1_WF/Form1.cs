@@ -155,15 +155,16 @@ namespace Practicum13_Task1_WF
         {
             int loadCap = (int)numericUpDown5.Value;
             richTextBox2.Clear();
+            int count = 0;
             foreach (var t in transport)
             {
-                if (t.LoadCapacity >= loadCap) richTextBox2.Text += t.OutInfo();
-                else 
+                if (t.LoadCapacity >= loadCap) 
                 {
-                    MessageBox.Show("Подходящих т/с не обнаружено!", "Ошибка!");
-                    return;
+                    richTextBox2.Text += t.OutInfo();
+                    count++;
                 } 
             }
+            if (count == 0) MessageBox.Show("Подходящих т/с не найдено", "Ошибка!");
         }
 
         private void button1_Click(object sender, EventArgs e)
